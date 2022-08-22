@@ -24,7 +24,7 @@ start a single kafka cluster by docker-compose
 ```bash
 $ mkdir kafka
 $ cd kafka
-$ git clone git@github.com:conduktor/kafka-stack-docker-compose.git
+$ git clone https://github.com/conduktor/kafka-stack-docker-compose.git
 $ cd kafka-stack-docker-compose
 $ docker-compose -f zk-single-kafka-single.yml up
 ......
