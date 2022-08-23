@@ -51,7 +51,7 @@ $ nc  -zv  127.0.0.1 9092
 ```bash
 # start dapr runtime without app1
 cd spring-cloud-stream-dapr/samples/local-kafka 
-dapr run --app-port 8080 --app-id app1 --app-protocol http --dapr-http-port 3501 --dapr-grpc-port 50001 --components-path=./components
+dapr run --app-port 8888 --app-id app1 --app-protocol http --dapr-http-port 3501 --dapr-grpc-port 50001 --components-path=./components
 ```
 
 Check the log to see if dapr runtime start successfully. 
