@@ -24,7 +24,7 @@ start a single kafka cluster by docker-compose
 ```bash
 $ mkdir kafka
 $ cd kafka
-$ git clone git@github.com:conduktor/kafka-stack-docker-compose.git
+$ git clone https://github.com/conduktor/kafka-stack-docker-compose.git
 $ cd kafka-stack-docker-compose
 $ docker-compose -f zk-single-kafka-single.yml up
 ......
@@ -71,4 +71,11 @@ succeed to send event GenericMessage [payload=byte[10], headers={contentType=app
 Sending message, sequence 1
 succeed to send event GenericMessage [payload=byte[10], headers={contentType=application/json, id=8c99736a-cef8-36ba-0964-c384f3c7a3b9, timestamp=1660619759064}]to kafka-pubsub/topic1
 ......
+# Receive messages from kafka-pubsub/topic1
+Subscriber got: event body
+Subscriber got: {"id":"b1ebc7b9-7053-49f0-b08a-cfdb268df674","source":"app1","type":"com.dapr.event.sent","specversion":"1.0","datacontenttype":"application/json","data":"event body","data_base64":null}
+Subscriber got: event body
+Subscriber got: {"id":"bb791ee8-bfaf-4c80-8b8a-22e9c2129573","source":"app1","type":"com.dapr.event.sent","specversion":"1.0","datacontenttype":"application/json","data":"event body","data_base64":null}
+......
 ```
+**Notice** : To make subscription work the user application will expose some HTTP endpoints referring to [Dapr SDK for JAVA](https://github.com/dapr/java-sdk). It requires applications to be web apps and the public URL has certain security risks. The implementation of the subscription is still under further discussion.
