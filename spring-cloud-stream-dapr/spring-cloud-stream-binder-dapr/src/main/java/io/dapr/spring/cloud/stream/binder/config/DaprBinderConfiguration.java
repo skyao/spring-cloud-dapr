@@ -5,7 +5,9 @@ import org.springframework.context.annotation.Configuration;
 
 import io.dapr.client.DaprClient;
 import io.dapr.client.DaprClientBuilder;
+import io.dapr.spring.cloud.stream.binder.DaprGrpcService;
 import io.dapr.spring.cloud.stream.binder.DaprMessageChannelBinder;
+import io.dapr.spring.cloud.stream.binder.messaging.DaprMessageConverter;
 import io.dapr.spring.cloud.stream.binder.properties.DaprBinderConfigurationProperties;
 import io.dapr.spring.cloud.stream.binder.properties.DaprExtendedBindingProperties;
 import io.dapr.spring.cloud.stream.binder.provisioning.DaprBinderProvisioner;
@@ -21,8 +23,8 @@ import org.springframework.cloud.stream.binder.Binder;
 @ConditionalOnMissingBean(Binder.class)
 @EnableConfigurationProperties({ DaprBinderConfigurationProperties.class, DaprExtendedBindingProperties.class })
 public class DaprBinderConfiguration {
-    
-    @Bean
+
+	@Bean
 	@ConditionalOnMissingBean
 	public DaprBinderProvisioner daprBinderProvisioner() {
 		return new DaprBinderProvisioner();
@@ -30,20 +32,31 @@ public class DaprBinderConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
+	public DaprMessageConverter daprMessageConverter() {
+		return new DaprMessageConverter();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
 	public DaprMessageChannelBinder daprMessageChannelBinder(DaprBinderProvisioner daprBinderProvisioner,
-			DaprExtendedBindingProperties daprExtendedBindingProperties, DaprClient daprClient) {
+			DaprExtendedBindingProperties daprExtendedBindingProperties, DaprClient daprClient,
+			DaprGrpcService daprGrpcService,
+			DaprMessageConverter daprMessageConverter) {
 		return new DaprMessageChannelBinder(
 				null,
 				daprBinderProvisioner,
 				daprExtendedBindingProperties,
-				daprClient);
+				daprClient, daprGrpcService, daprMessageConverter);
 	}
+
+
+
 
 	@Bean
 	@ConditionalOnMissingBean
 	public DaprClient daprClient(DaprBinderConfigurationProperties properties) {
 		DaprClient client = new DaprClientBuilder()
-			.build();
+				.build();
 		return client;
 	}
 }
