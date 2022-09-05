@@ -1,6 +1,7 @@
 package io.dapr.spring.cloud.stream.sample.localkafka;
 
 
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -31,7 +32,6 @@ public class SampleApplication {
 			return MessageBuilder.withPayload("event body " + i).build();
 		};
 	}
-
 
 	@Bean
 	public Consumer<Message<String>> consume() {
