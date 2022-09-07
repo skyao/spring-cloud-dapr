@@ -36,7 +36,7 @@ public class SampleApplication {
 	@Bean
 	public Consumer<Message<String>> consume() {
 		return message -> {
-			LOGGER.info("Message received : {}", message.getPayload());
+			LOGGER.info("Message received : {}", message);
 		};
 	}
 

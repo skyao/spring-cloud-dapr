@@ -34,6 +34,7 @@ public class DaprMessageHandler extends AbstractMessageProducingHandler {
     protected void handleMessageInternal(Message<?> message) {
         PublishEventRequest request = new PublishEventRequest(pubsubName, topic, message);
         this.daprClient.publishEvent(request).block();
+        logger.info("succeed to send event " + message + "to " + pubsubName + "/"  +  topic);
     }
     
 }
