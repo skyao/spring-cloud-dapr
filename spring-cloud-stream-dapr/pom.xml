@@ -23,6 +23,7 @@
 		<module>spring-cloud-stream-binder-dapr-grpc</module>
 		<module>spring-cloud-starter-stream-dapr-http</module>
 		<module>spring-cloud-stream-binder-dapr-http</module>
+		<module>spring-cloud-stream-binder-dapr-common</module>
 		<module>samples</module>
 	</modules>
 	<dependencyManagement>

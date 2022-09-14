@@ -9,7 +9,7 @@ import io.dapr.spring.cloud.stream.binder.DaprGrpcService;
  * Dapr binder's Spring Boot AutoConfiguration.
  */
 @Configuration(proxyBeanMethods = false)
-public class DaprServerAutoConfiguration {
+public class DaprGrpcServerAutoConfiguration {
 
     @Bean
 	@ConditionalOnMissingBean
