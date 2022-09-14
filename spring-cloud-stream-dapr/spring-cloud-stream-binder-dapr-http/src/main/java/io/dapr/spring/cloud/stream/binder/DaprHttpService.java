@@ -1,4 +1,4 @@
-package io.dapr.spring.cloud.stream.sample.httpkafka;
+package io.dapr.spring.cloud.stream.binder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.dapr.Topic;
@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 @RestController
-public class SubscriberController {
+public class DaprHttpService {
 
   private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
+  //private static final String ramdonPath = "/" + RandomStringUtils.randomAlphanumeric(20);
+  //@Topic(name = "${spring.cloud.stream.bindings.supply-out-0.destination}", pubsubName = "${spring.cloud.dapr.bindings.supply-out-0:producer:pubsubName}")
+
   @Topic(name = "topic1", pubsubName = "kafka-pubsub")
-  @PostMapping(path = "/topic1")
+  @PostMapping(path = "/ramdonpath" )
   public Mono<Void> handleMessage(@RequestBody(required = false) CloudEvent<?> cloudEvent) {
     return Mono.fromRunnable(() -> {
       try {

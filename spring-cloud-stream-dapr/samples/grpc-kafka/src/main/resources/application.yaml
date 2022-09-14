@@ -1,6 +1,6 @@
 grpc:
   server:
-    port: 9999
+    port: 8899
 
 spring:
   cloud:
