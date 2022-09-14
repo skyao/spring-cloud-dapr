@@ -10,6 +10,7 @@
 	<description>Spring Cloud Stream Dapr samples</description>
 
 	<modules>
-		<module>local-kafka</module>
+		<module>grpc-kafka</module>
+		<module>http-kafka</module>
 	</modules>
 </project>

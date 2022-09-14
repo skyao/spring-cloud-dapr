@@ -15,10 +15,14 @@
 
 	<properties>
 		<spring-cloud-stream.version>3.2.4</spring-cloud-stream.version>
+		<grpc-netty-shaded.version>1.42.2</grpc-netty-shaded.version>
+		<grpc-server-spring-boot-starter.version>2.13.1.RELEASE</grpc-server-spring-boot-starter.version>
 	</properties>
 	<modules>
-		<module>spring-cloud-starter-stream-dapr</module>
-		<module>spring-cloud-stream-binder-dapr</module>
+		<module>spring-cloud-starter-stream-dapr-grpc</module>
+		<module>spring-cloud-stream-binder-dapr-grpc</module>
+		<module>spring-cloud-starter-stream-dapr-http</module>
+		<module>spring-cloud-stream-binder-dapr-http</module>
 		<module>samples</module>
 	</modules>
 	<dependencyManagement>
@@ -27,6 +31,16 @@
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-stream</artifactId>
 				<version>${spring-cloud-stream.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.grpc</groupId>
+				<artifactId>grpc-netty-shaded</artifactId>
+				<version>${grpc-netty-shaded.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.devh</groupId>
+				<artifactId>grpc-server-spring-boot-starter</artifactId>
+				<version>${grpc-server-spring-boot-starter.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

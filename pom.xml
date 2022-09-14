@@ -34,7 +34,12 @@
 			</dependency>
 			<dependency>
 				<groupId>io.dapr.spring</groupId>
-				<artifactId>spring-cloud-stream-binder-dapr</artifactId>
+				<artifactId>spring-cloud-stream-binder-dapr-grpc</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.dapr.spring</groupId>
+				<artifactId>spring-cloud-stream-binder-dapr-http</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
