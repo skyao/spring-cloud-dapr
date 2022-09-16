@@ -1,4 +1,4 @@
-package io.dapr.spring.cloud.stream.binder;
+package io.dapr.spring.cloud.stream.sample.httpkafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.dapr.Topic;
@@ -8,23 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-//import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
-public class DaprHttpService {
+public class SubscriberController {
 
   private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
-  //private static final String ramdonPath = "/" + RandomStringUtils.randomAlphanumeric(20);
-  //@Topic(name = "${spring.cloud.stream.bindings.supply-out-0.destination}", pubsubName = "${spring.cloud.dapr.bindings.supply-out-0:producer:pubsubName}")
+  private static Logger logger = LoggerFactory.getLogger(SubscriberController.class);
 
   @Topic(name = "topic1", pubsubName = "kafka-pubsub")
-  @PostMapping(path = "/ramdonpath" )
+  @PostMapping(path = "/topic1")
   public Mono<Void> handleMessage(@RequestBody(required = false) CloudEvent<?> cloudEvent) {
     return Mono.fromRunnable(() -> {
       try {
-        System.out.println("Subscriber got: " + cloudEvent.getData());
-        System.out.println("Subscriber got: " + OBJECT_MAPPER.writeValueAsString(cloudEvent));
+        logger.info("Subscriber got: " + cloudEvent.getData());
+        logger.info("Subscriber got: " + OBJECT_MAPPER.writeValueAsString(cloudEvent));
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
