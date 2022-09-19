@@ -51,11 +51,11 @@ $ nc  -zv  127.0.0.1 9092
 ```bash
 # start dapr runtime for grpc 
 cd spring-cloud-stream-dapr/samples/grpc-kafka 
-dapr run --app-port 9999 --app-id app1 --app-protocol grpc  --dapr-http-port 3501 --dapr-grpc-port 50001 --components-path=./components
+dapr run --app-port 3500 --app-id app1 --app-protocol grpc  --dapr-http-port 3501 --dapr-grpc-port 50001 --components-path=./components
 
 # start dapr runtime for http 
 cd spring-cloud-stream-dapr/samples/http-kafka
-dapr run --app-port 8888 --app-id app1 --app-protocol http --dapr-http-port 3501 --dapr-grpc-port 50001 --components-path=./components
+dapr run --app-port 3500 --app-id app1 --app-protocol http --dapr-http-port 3501 --dapr-grpc-port 50001 --components-path=./components
 ```
 
 Check the log to see if dapr runtime start successfully. 

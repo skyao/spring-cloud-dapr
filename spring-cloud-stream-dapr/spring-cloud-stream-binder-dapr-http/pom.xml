@@ -9,7 +9,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-cloud-stream-binder-dapr-http</artifactId>
-	<description>Dapr Implementation for Spring Cloud Stream Binder</description>
+	<description>Dapr Implementation for Spring Cloud Stream Binder Via Http</description>
 	<dependencies>
 		<dependency>
 			<groupId>io.dapr</groupId>
@@ -28,6 +28,20 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-stream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
+		</dependency> -->
+		<dependency>
+			<groupId>io.dapr.spring</groupId>
+			<artifactId>spring-cloud-stream-binder-dapr-common</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>
