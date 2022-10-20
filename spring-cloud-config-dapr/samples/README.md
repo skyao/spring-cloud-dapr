@@ -1,0 +1,1 @@
+dapr run --app-port 3501 --app-id orderprocessing --app-protocol grpc  --dapr-http-port 3500 --dapr-grpc-port 50001 --components-path ./components
