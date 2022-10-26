@@ -1,0 +1,28 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.dapr.spring.cloud.config.client.ConfigClientAutoConfiguration
+
+# Bootstrap components
+org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+io.dapr.spring.cloud.config.client.ConfigServiceBootstrapConfiguration,\
+io.dapr.spring.cloud.config.client.DiscoveryClientConfigServiceBootstrapConfiguration
+
+# Environment PostProcessor
+org.springframework.boot.env.EnvironmentPostProcessor=\
+io.dapr.spring.cloud.config.client.ConfigServerConfigDataMissingEnvironmentPostProcessor
+
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+io.dapr.spring.cloud.config.client.ConfigServerConfigDataMissingEnvironmentPostProcessor.ImportExceptionFailureAnalyzer,\
+io.dapr.spring.cloud.config.client.diagnostics.analyzer.InvalidApplicationNameExceptionFailureAnalyzer
+
+# ConfigData Location Resolvers
+org.springframework.boot.context.config.ConfigDataLocationResolver=\
+io.dapr.spring.cloud.config.client.ConfigServerConfigDataLocationResolver
+
+# ConfigData Loaders
+org.springframework.boot.context.config.ConfigDataLoader=\
+io.dapr.spring.cloud.config.client.ConfigServerConfigDataLoader
+
+# Spring Boot BootstrapRegistryInitializers
+org.springframework.boot.BootstrapRegistryInitializer=\
+io.dapr.spring.cloud.config.client.ConfigClientRetryBootstrapper
