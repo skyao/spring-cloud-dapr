@@ -8,4 +8,8 @@ spring:
     name: configclient
   config:
     import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      keys: [orderId1 ,orderId2,test]
+      storename: configstore
 

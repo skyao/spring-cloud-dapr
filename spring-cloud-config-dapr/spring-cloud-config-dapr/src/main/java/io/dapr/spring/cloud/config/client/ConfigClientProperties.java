@@ -23,6 +23,7 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -162,6 +163,29 @@ public class ConfigClientProperties {
 	 * Additional headers used to create the client request.
 	 */
 	private Map<String, String> headers = new HashMap<>();
+
+
+	private List<String> keys;
+
+	//@Value("${spring.cloud.config.storename}")
+	private String storeName;
+
+	public void setKeys(List<String> keys) {
+		this.keys = keys;
+	}
+
+	public List<String> getKeys() {
+		return this.keys;
+	}
+
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+
+	public String getStoreName() {
+		return this.storeName;
+	}
+
 
 	ConfigClientProperties() {
 	}

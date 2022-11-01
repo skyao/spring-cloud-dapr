@@ -155,10 +155,11 @@ public class ConfigServerConfigDataLoader implements ConfigDataLoader<ConfigServ
 
 					try (DaprPreviewClient client = (new DaprClientBuilder()).buildPreviewClient()) {
 						List<String> keys = new ArrayList<>();
-						keys.add("orderId1");
-						keys.add("orderId2");
-						keys.add("test");
-						GetConfigurationRequest req = new GetConfigurationRequest("configstore", keys);
+						
+						// System.out.print(properties.getName());
+						// System.out.print(properties.getStoreName());
+						// System.out.print(properties.getKeys().toString());
+						GetConfigurationRequest req = new GetConfigurationRequest(properties.getStoreName(), properties.getKeys());
 
 						Map<String, Object> seqMap = new LinkedHashMap<>();
 						try {
@@ -168,9 +169,9 @@ public class ConfigServerConfigDataLoader implements ConfigDataLoader<ConfigServ
 							});
 
 							@SuppressWarnings("unchecked")
-							Map<String, Object> m = translateOrigins("file:config-repo/configclient.yml", seqMap);
+							Map<String, Object> m = translateOrigins("configuration items", seqMap);
 							propertySources.add(0, new OriginTrackedMapPropertySource(
-									"configserver:file:config-repo/configclient.yml", m));
+									"dapr configuration items", m));
 
 						} catch (Exception ex) {
 							System.out.println(ex.getMessage());
