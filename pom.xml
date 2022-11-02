@@ -19,6 +19,7 @@
 	</properties>
 	<modules>
 		<module>spring-cloud-stream-dapr</module>
+		<module>spring-cloud-config-dapr</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
