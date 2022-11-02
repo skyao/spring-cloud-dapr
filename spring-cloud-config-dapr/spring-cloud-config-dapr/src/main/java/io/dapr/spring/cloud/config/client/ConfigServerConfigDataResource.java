@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Objects;
 
 import org.apache.commons.logging.Log;
-
 import org.springframework.boot.context.config.ConfigDataResource;
 import org.springframework.boot.context.config.Profiles;
 import org.springframework.core.style.ToStringCreator;
@@ -33,8 +32,6 @@ public class ConfigServerConfigDataResource extends ConfigDataResource {
 	private final boolean optional;
 
 	private final Profiles profiles;
-
-	private RetryProperties retryProperties;
 
 	private Log log;
 
@@ -72,14 +69,6 @@ public class ConfigServerConfigDataResource extends ConfigDataResource {
 		return this.log;
 	}
 
-	public RetryProperties getRetryProperties() {
-		return this.retryProperties;
-	}
-
-	public void setRetryProperties(RetryProperties retryProperties) {
-		this.retryProperties = retryProperties;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -100,7 +89,7 @@ public class ConfigServerConfigDataResource extends ConfigDataResource {
 
 	@Override
 	public String toString() {
-		return new ToStringCreator(this).append("uris", properties.getUri()).append("optional", optional)
+		return new ToStringCreator(this).append("optional", optional)
 				.append("profiles", profiles.getAccepted()).toString();
 
 	}
