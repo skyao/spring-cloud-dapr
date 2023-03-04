@@ -45,7 +45,9 @@ import io.dapr.client.DaprClientBuilder;
 import io.dapr.client.DaprPreviewClient;
 import io.dapr.client.domain.ConfigurationItem;
 import io.dapr.client.domain.GetConfigurationRequest;
+import io.dapr.client.domain.SubscribeConfigurationRequest;
 import io.dapr.spring.cloud.config.environment.Environment;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class ConfigServerConfigDataLoader implements ConfigDataLoader<ConfigServerConfigDataResource>, Ordered {
@@ -80,13 +82,24 @@ public class ConfigServerConfigDataLoader implements ConfigDataLoader<ConfigServ
 		String errorBody = null;
 		try {
 			try (DaprPreviewClient client = (new DaprClientBuilder()).buildPreviewClient()) {
+
+				// SubscribeConfigurationRequest req = new SubscribeConfigurationRequest(properties.getStoreName(),properties.getKeys());
 				GetConfigurationRequest req = new GetConfigurationRequest(properties.getStoreName(),properties.getKeys());
+
 				Map<String, Object> seqMap = new LinkedHashMap<>();
 				try {
+
+					// Flux<List<ConfigurationItem>> items =  client.subscribeToConfiguration(req);
+					// items.toIterable().forEach((item) -> {
+					// 	// seqMap.put(((ConfigurationItem) item).getKey(), ((ConfigurationItem) item).getValue());
+
+						
+					// });
 					Mono<List<ConfigurationItem>> items = client.getConfiguration(req);
 					items.block().forEach((item) -> {
 						seqMap.put(item.getKey(), item.getValue());
 					});
+
 
 					@SuppressWarnings("unchecked")
 					Map<String, Object> m = translateOrigins("configuration items", seqMap);
