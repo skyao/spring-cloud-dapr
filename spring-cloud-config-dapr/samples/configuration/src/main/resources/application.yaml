@@ -1,0 +1,13 @@
+grpc:
+  server:
+    port: 3501
+
+
+spring:
+  config:
+    import: dapr
+  cloud:
+    config: 
+      keys: [orderId1 ,orderId2,test] # Select the items from dapr configuration
+      storename: configstore
+
